@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benim Portfolyom</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Portfolyo</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link" data-target="home">Anasayfa</a></li>
+                <li><a href="#about" class="nav-link" data-target="about">Hakkımda</a></li>
+                <li><a href="#projects" class="nav-link" data-target="projects">Projelerim</a></li>
+                <li><a href="#contact" class="nav-link" data-target="contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app">
+
+        <section id="home" class="page-section active">
+            <div class="hero-content">
+                <h1>Merhaba, Ben Yelda</h1>
+                <p>Bilişim Sistemleri Mühendisliği Öğrencisi & Web Geliştirici</p>
+                <button onclick="window.location.hash='#projects'">Projelerime Göz At</button>
+            </div>
+        </section>
+
+        <section id="about" class="page-section hidden">
+            <h2>Hakkımda</h2>
+            <div class="about-content">
+                <p>Sakarya Üniversitesi Bilişim Sistemleri Mühendisliği 2. sınıf öğrencisiyim. Şu anda ağırlıklı olarak
+                    Python üzerine çalışıyorum. Geçmişten gelen C++, C# gibi dillerde de temel seviyede bilgi sahibiyim.
+                    Son dönemlerde ise özellikle frontend alanına yönelerek web geliştirme üzerine kendimi
+                    geliştiriyorum. HTML, CSS, JavaScript ve React gibi teknolojilerle projeler yapmaya çalışıyor, bu
+                    alanda daha yetkin hale gelmeyi hedefliyorum. Teknolojiye ve yazılım dünyasına ilgi duyuyor,
+                    öğrendiklerimi sürekli pratiğe dökmeye özen gösteriyorum.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="page-section hidden">
+            <h2>Projelerim</h2>
+            <div class="projects-grid" id="projects-container">
+            </div>
+        </section>
+
+        <section id="contact" class="page-section hidden">
+            <h2>İletişim</h2>
+            <form id="contact-form">
+                <label for="name">Ad Soyad:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Mesaj:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Gönder</button>
+            </form>
+            <div id="form-message"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yelda Battı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
