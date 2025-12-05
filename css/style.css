@@ -11,13 +11,16 @@ body{
 
 .page-section{
     display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
     padding: 2rem;
     min-height: 80vh;
 }
 
 .page-section.active{
     display: block;
-    animation: fadeIn 0.5s ease-in;
+    opacity: 1;
+    
 }
 
 @keyframes fadeIn {
@@ -42,4 +45,10 @@ nav ul{
 nav a {
     color: white;
     text-decoration: none;
+}
+
+.nav-links a.active-link{
+    color: lightgreen;
+    font-weight: bold;
+    border-bottom: 2px solid lightgreen;
 }
