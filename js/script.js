@@ -1,105 +1,77 @@
-[
-    {
-        "id":1, 
-        "title": "Proje 1: Adam Asmaca Oyunu",
-        "description": "Python programlama dilinde yapmış olduğum adam asmaca oyunu",
-        "image": "https://via.placeholder.com/300",
-        "link": "#"
-
-    }, 
-
-    {
-        "id":2,
-        "title":"Proje 2: Responsive Site",
-        "description": "HTML, CSS ve JAVASCRIPT Kullanarak yapmış olduğum resposive site örneği",
-        "image":"https://via.placeholder.com/300",
-        "link": "#"
-    },
-
-    {
-        "id":3,
-        "title":"Proje 3: Captcha App",
-        "description": "C# Programlama dilini kullanarak yapmış olduğum basit bir captcha uygulaması",
-        "image":"https://via.placeholder.com/300",
-        "link": "#"
-    }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    
+    // --- 1. BÖLÜM: SPA MENÜ GEÇİŞLERİ (NAVİGASYON) ---
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
 
-    // 2. Her bir menü linkine tıklama olayı 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Sayfanın yenilenmesini önlemek
+            e.preventDefault(); // Sayfa yenilenmesini engelle
 
-            // Tıklanan linkin hedefi
+            // Hedef bölümü bul (Örn: #projects -> projects)
             const targetId = link.getAttribute('href').substring(1); 
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                //Tüm bölümleri gizle
+                // Tüm bölümleri gizle
                 sections.forEach(section => {
                     section.classList.remove('active');
                 });
 
-                //Hedef bölümü göster
+                // Hedef bölümü göster
                 targetSection.classList.add('active');
 
-                //URL'i güncelle (Sayfa yenilenmeden adres çubuğu değişir)
-                
+                // URL'i güncelle
                 history.pushState(null, null, `#${targetId}`);
 
-               
+                // Menüdeki aktiflik durumunu güncelle
                 navLinks.forEach(nav => nav.classList.remove('active-link'));
                 link.classList.add('active-link');
             }
         });
     });
 
-    // 
+    // Sayfa yenilendiğinde doğru bölümü aç (URL kontrolü)
     const initialHash = window.location.hash.substring(1);
     if (initialHash) {
         const initialSection = document.getElementById(initialHash);
         const initialLink = document.querySelector(`.nav-link[href="#${initialHash}"]`);
         
         if (initialSection) {
-           
             sections.forEach(sec => sec.classList.remove('active'));
             initialSection.classList.add('active');
-            
-            // Linki aktifleştir
             if (initialLink) initialLink.classList.add('active-link');
         }
     }
+
+    // --- 2. BÖLÜM: PROJELERİ JSON'DAN ÇEKME (FETCH API) ---
+    loadProjects();
 });
 
-
-/* -------------------------------------------------------
-   VERİ ÇEKME FONKSİYONLARI (FETCH API)
-------------------------------------------------------- */
-
-const projectsContainer = document.getElementById('projects-container');
-
+// Projeleri Yükleyen Fonksiyon
 async function loadProjects() {
+    const projectsContainer = document.getElementById('projects-container');
+    
+    // Eğer proje kutusu HTML'de yoksa hata vermesin diye kontrol
+    if (!projectsContainer) return;
+
     try {
-        
+        // data klasöründeki projects.json dosyasını oku
         const response = await fetch('data/projects.json');
         
-        
+        // Gelen cevabı JSON formatına çevir
         const projects = await response.json();
 
-        
-        projectsContainer.innerHTML = ''; 
+        // Önce kutunun içini temizle
+        projectsContainer.innerHTML = '';
 
+        // Her proje için döngü kur
         projects.forEach(project => {
-            
+            // Yeni bir div oluştur
             const projectCard = document.createElement('div');
             projectCard.classList.add('project-card');
 
+            // İçeriğini doldur (JSON verileri buraya yerleşiyor)
             projectCard.innerHTML = `
                 <img src="${project.image}" alt="${project.title}">
                 <div class="card-content">
@@ -110,18 +82,12 @@ async function loadProjects() {
                 </div>
             `;
 
-            
+            // Kartı ana kutuya ekle
             projectsContainer.appendChild(projectCard);
         });
 
     } catch (error) {
-        console.error("Veri çekilirken hata oluştu:", error);
-        projectsContainer.innerHTML = '<p>Projeler yüklenirken bir hata oluştu.</p>';
+        console.error("Projeler yüklenirken hata oluştu:", error);
+        projectsContainer.innerHTML = '<p style="text-align:center; color:red;">Projeler yüklenemedi. Lütfen Live Server kullandığınızdan emin olun.</p>';
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadProjects();
-    
-});

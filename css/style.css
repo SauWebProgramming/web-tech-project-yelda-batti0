@@ -4,12 +4,12 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
 }
 
-.page-section{
+.page-section {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
@@ -17,25 +17,30 @@ body{
     min-height: 80vh;
 }
 
-.page-section.active{
+.page-section.active {
     display: block;
     opacity: 1;
-    
+
 }
 
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-nav{
+nav {
     background: #333;
     color: #fff;
     padding: 1rem;
- 
+
 }
 
-nav ul{
+nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
@@ -47,57 +52,86 @@ nav a {
     text-decoration: none;
 }
 
-.nav-links a.active-link{
+.nav-links a.active-link {
     color: lightgreen;
     font-weight: bold;
     border-bottom: 2px solid lightgreen;
 }
 
 
-.projects-grid{
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 1rem 0;
 }
-.project-card{
+
+.project-card {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.project-card:hover{
+
+.project-card:hover {
     transform: translateY(-5px);
 }
-project-card img{
+
+project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
-card-content{
-    padding: 1.5rem;
-}   
-card-content h3{
-    margin-bottom: 0.5rem;
-    color: #333;
+
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-.card-content .category{
-    display: inline-block;
-    background: #e0e0e0;
-    color: #555;
-    padding: 0.3rem 0.6rem;
-    border-radius: 5px;
-    font-size: 0.8rem;  
-    margin-bottom: 1rem;    
+
+card-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #2c3e50;
+
 
 }
-.card-content .btn{
+
+.card-content .category {
     display: inline-block;
-    margin-top: 1rem;
-    text-decoration: none;  
-    color: lightgreen ;
+    background: #f0f0f0;
+    color: #666;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    align-self: flex-start;
+
+
+}
+
+.card-content .btn {
+    display: inline-block;
+    color: #27ae60;
     font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+
+
+}
+
+.card-content .btn:hover {
+    color: #2ecc71;
+    text-decoration: underline;
+}   
+
+.card-content p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
 
 
 }
