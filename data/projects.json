@@ -1,0 +1,31 @@
+[
+   {
+    "id": 1,
+    "title" : "Responsive Website",
+    "description": " HTML, CSS, ve JavaScript kullanarak duyarlı bir web sitesi geliştirdim. Farklı cihazlarda ve ekran boyutlarında düzgün görünmesini sağladım. ", 
+    "category"  : "Web Sitesi",
+    "image" : "responsive-website.png", 
+    "github" : "https://github.com/yelda-batti0/responsive_website.git"   
+   },
+
+   {
+    "id": 2,
+    "title" : "Adam Asmaca Oyunu Uygulaması",
+    "description": " Python kullanarak basit bir Adam Asmaca oyunu geliştirdim. Kullanıcıların kelime tahmin etmelerini sağlayan konsol tabanlı bir uygulama oluşturdum.", 
+    "category"  : "Uygulama",
+    "image" : "hangman-game.png", 
+    "github" : "https://github.com/yelda-batti0/hangman_python.git " 
+    }, 
+
+    {
+    "id": 3,
+    "title" : "Captcha uygulaması",
+    "description": "C# kullanarak basit bir Captcha uygulaması geliştirdim. Kullanıcıların bot olmadığını doğrulamak için rastgele karakterler içeren bir metin oluşturuyor.",
+    "category"  : "Uygulama",   
+    "image" : "captcha-app.png",
+    "github" : "https://github.com/yelda-batti0/CaptchaApp.git "
+    }
+
+
+
+]

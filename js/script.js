@@ -76,3 +76,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+/* -------------------------------------------------------
+   VERİ ÇEKME FONKSİYONLARI (FETCH API)
+------------------------------------------------------- */
+
+const projectsContainer = document.getElementById('projects-container');
+
+async function loadProjects() {
+    try {
+        
+        const response = await fetch('data/projects.json');
+        
+        
+        const projects = await response.json();
+
+        
+        projectsContainer.innerHTML = ''; 
+
+        projects.forEach(project => {
+            
+            const projectCard = document.createElement('div');
+            projectCard.classList.add('project-card');
+
+            projectCard.innerHTML = `
+                <img src="${project.image}" alt="${project.title}">
+                <div class="card-content">
+                    <h3>${project.title}</h3>
+                    <span class="category">${project.category}</span>
+                    <p>${project.description}</p>
+                    <a href="${project.link}" target="_blank" class="btn">İncele <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+
+            
+            projectsContainer.appendChild(projectCard);
+        });
+
+    } catch (error) {
+        console.error("Veri çekilirken hata oluştu:", error);
+        projectsContainer.innerHTML = '<p>Projeler yüklenirken bir hata oluştu.</p>';
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+    
+});
