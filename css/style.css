@@ -135,3 +135,73 @@ card-content h3 {
 
 
 }
+
+/* --- İletişim Formu Tasarımı --- */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto; /* Ortalar */
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#contact-form input, 
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+#contact-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition:  0.3s;
+}
+
+#contact-form button:hover {
+    background: #555;
+}
+
+/* Form Mesajları (JS ile ekleniyor) */
+#form-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px; /* Mesaj yokken zıplamayı önler */
+}
+
+/* Başarılı Mesaj Stili */
+.success {
+    color: #27ae60;
+    background: #eafaf1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #27ae60;
+}
+
+/* Hata Mesajı Stili */
+.error {
+    color: #c0392b;
+    background: #f9e7e7;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c0392b;
+}

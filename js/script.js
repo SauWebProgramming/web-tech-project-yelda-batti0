@@ -91,3 +91,48 @@ async function loadProjects() {
         projectsContainer.innerHTML = '<p style="text-align:center; color:red;">Projeler yüklenemedi. Lütfen Live Server kullandığınızdan emin olun.</p>';
     }
 }
+
+// --- 3. BÖLÜM: İLETİŞİM FORMU KONTROLÜ ---
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // SAYFANIN YENİLENMESİNİ ENGELLEYEN KISIM
+
+         
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+           // 2. Basit Doğrulamalar 
+            if (name.length < 3) {
+                showAlert('İsim en az 3 karakter olmalıdır.', 'error');
+                return;
+            }
+
+            if (message.length < 10) {
+                showAlert('Mesajınız çok kısa. Lütfen en az 10 karakter yazın.', 'error');
+                return;
+            }
+
+            // 3. Başarılı Gönderim Simülasyonu
+            // Gerçekte bir yere gitmiyor, sadece kullanıcıya bilgi veriyoruz.
+            showAlert(`Teşekkürler ${name}! Mesajınız başarıyla alındı.`, 'success');
+            
+            // Formu temizleme
+            contactForm.reset();
+        });
+    }
+
+    // Mesaj gösterme fonksiyonu (Hatalı veya Başarılı)
+    function showAlert(msg, type) {
+        formMessage.textContent = msg;
+        formMessage.className = type; // CSS'te .error veya .success stilini alacak
+        
+        // 3 saniye sonra mesajı sil
+        setTimeout(() => {
+            formMessage.textContent = '';
+            formMessage.className = '';
+        }, 5000);
+    }
