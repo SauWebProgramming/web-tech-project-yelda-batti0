@@ -136,3 +136,39 @@ async function loadProjects() {
             formMessage.className = '';
         }, 5000);
     }
+
+    // --- 4. BÖLÜM: HAMBURGER MENÜ KONTROLÜ ---
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            // Menüyü aç/kapa 
+            navMenu.classList.toggle('open');
+            
+            // İkonu değiştir (Çarpı veya Çizgi)
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // Çarpı ikonu
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars'); // Hamburger ikonu
+            }
+        });
+    }
+
+    // Mobilde bir linke tıklayınca menüyü otomatik kapat
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            
+            if (navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                
+                // İkonu eski haline getir
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });

@@ -205,3 +205,48 @@ card-content h3 {
     border-radius: 5px;
     border: 1px solid #c0392b;
 }
+
+/* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    
+    .hamburger {
+        display: block;
+    }
+
+    
+    .nav-links {
+        position: fixed; /* Sabit pozisyon */   
+        right: -100%; /* Ekranın dışına saklansın */
+        top: 60px; /* Header'ın hemen altından başlasın */
+        height: calc(100vh - 60px);
+        background-color: #333;
+        flex-direction: column; /* Linkleri alt alta diz */
+        width: 50%; /* Ekranın yarısını kaplasın */
+        text-align: center;
+        transition: right 0.4s ease-in-out; /* Kayma animasyonu */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+        z-index: 1000;
+        padding-top: 2rem;
+    }
+
+    /* JavaScript 'open' sınıfını eklediğinde menü ekrana kaysın */
+    .nav-links.open {
+        right: 0;
+    }
+
+    /* Linklerin aralığını açalım */
+    .nav-links li {
+        margin: 2rem 0;
+    }
+}
