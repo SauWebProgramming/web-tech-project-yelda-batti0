@@ -22,6 +22,7 @@ Modern web teknolojileri kullanılarak geliştirilen bu kişisel web sitesi; ana
 
 ## 🌐 Canlı Önizleme (Live Demo)
 Projenin yayındaki haline aşağıdaki linkten ulaşabilirsiniz:
+ https://sauwebprogramming.github.io/web-tech-project-yelda-batti0/ 
 
 
 ---
