@@ -1,102 +1,217 @@
+/* --- GENEL AYARLAR VE DEĞİŞKENLER --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #4a90e2; 
+    --secondary-color: #2c3e50; 
+    --bg-color: #f4f7f6; 
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--bg-color); 
+    color: var(--text-color);
     line-height: 1.6;
 }
 
+/* --- SPA (TEK SAYFA) MANTIĞI VE ANİMASYONLAR --- */
 .page-section {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     padding: 2rem;
-    min-height: 80vh;
+    /* min-height burada vermiyoruz, aşağıda özelleştireceğiz */
 }
 
+/* Aktif bölümü görünür yap ve animasyonu çalıştır */
 .page-section.active {
     display: block;
-    opacity: 1;
-
+    animation: slideUpFade 0.6s ease-out forwards; 
 }
 
-@keyframes fadeIn {
+@keyframes slideUpFade {
     from {
         opacity: 0;
+        transform: translateY(20px);
     }
-
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-nav {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-
+/* --- NAVİGASYON (ÜST MENÜ) --- */
+nav.navbar {
+    background: white; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Menü yukarıda kalsın */
+    top: 0;
+    z-index: 1000;
 }
 
-nav ul {
+nav .logo {
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
-
 }
 
-nav a {
-    color: white;
+.nav-links a {
+    color: var(--secondary-color); 
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
+.nav-links a:hover, 
 .nav-links a.active-link {
-    color: lightgreen;
-    font-weight: bold;
-    border-bottom: 2px solid lightgreen;
+    color: var(--primary-color); 
+}
+
+/* --- HERO (ANA SAYFA) ÖZEL TASARIMI --- */
+
+#home.active {
+    display: flex; /* Sadece aktifken görünür ve esnek kutu olur */
+    align-items: center; 
+    justify-content: flex-start; 
 }
 
 
+
+#home {
+    
+    align-items: center; 
+    justify-content: flex-start; 
+    min-height: 85vh; 
+    
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 4rem; 
+    line-height: 1.1; 
+    margin-bottom: 20px; 
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.hero-content h1 .highlight {
+    color: var(--primary-color); 
+}
+
+.hero-content p {
+    font-size: 1.5rem; 
+    color: #666;
+    margin-bottom: 40px; 
+    max-width: 600px; 
+}
+
+/* Ana Sayfa Butonu */
+.hero-content button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; 
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+    transition: all 0.3s ease;
+}
+
+.hero-content button:hover {
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 15px 25px rgba(118, 75, 162, 0.5); 
+}
+
+.hero-content button:active {
+    transform: scale(0.95); 
+}
+
+/* --- DİĞER SAYFALARIN YERLEŞİM DÜZELTMESİ --- */
+/* Bu kısım Hakkımda, Projeler ve İletişim sayfasının yukarı kaymasını engeller */
+#about, #projects, #contact {
+    padding-top: 100px; /* Menünün altında kalmaması için boşluk */
+    vertical-align: top;
+    text-align: left;
+    min-height: 100vh;
+}
+
+#about h2, #projects h2, #contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+}
+
+/* --- PROJELER BÖLÜMÜ (KART TASARIMI) --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2.5rem; 
+    padding: 1rem;
 }
 
 .project-card {
-    background: #fff;
-    border-radius: 10px;
+    background: var(--card-bg);
+    border-radius: 15px; 
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow); 
+    transition: all 0.4s ease; 
+    border: 1px solid rgba(0,0,0,0.05); 
+    display: flex;
+    flex-direction: column; /* İçeriği alt alta hizala */
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); 
 }
 
-project-card img {
+.project-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
 }
 
 .card-content {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1; /* Kartın kalan kısmını doldur */
 }
 
-card-content h3 {
+.card-content h3 {
+    font-weight: 600;
+    color: var(--secondary-color);
     margin-bottom: 10px;
-    font-size: 1.4rem;
-    color: #2c3e50;
-
-
 }
 
 .card-content .category {
@@ -108,87 +223,89 @@ card-content h3 {
     font-size: 0.85rem;
     margin-bottom: 15px;
     align-self: flex-start;
-
-
 }
 
-.card-content .btn {
-    display: inline-block;
-    color: #27ae60;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s;
-
-
-}
-
-.card-content .btn:hover {
-    color: #2ecc71;
-    text-decoration: underline;
-}   
-
-.card-content p{
+.card-content p {
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
-    flex-grow: 1;
-
-
+    flex-grow: 1; /* Butonu en alta itmek için */
 }
 
-/* --- İletişim Formu Tasarımı --- */
+/* Kartlardaki İncele Butonu */
+.card-content .btn {
+    display: inline-block;
+    margin-top: auto; 
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white;
+    border-radius: 25px; 
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+    transition: transform 0.2s;
+    width: fit-content; /* Sadece yazı kadar yer kaplasın */
+}
+
+.card-content .btn:hover {
+    transform: scale(1.05); 
+    color: white;
+    text-decoration: none;
+}
+
+/* --- İLETİŞİM FORMU TASARIMI --- */
 #contact-form {
     max-width: 600px;
-    margin: 0 auto; /* Ortalar */
-    background: #f9f9f9;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin: 0 auto; 
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
 }
 
 #contact-form label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--secondary-color);
 }
 
 #contact-form input, 
 #contact-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 1.5rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: inherit;
+    background: #f9f9f9;
 }
 
 #contact-form button {
     display: block;
     width: 100%;
-    padding: 12px;
-    background: #333;
+    padding: 15px;
+    background: var(--secondary-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
-    transition:  0.3s;
+    font-size: 1.1rem;
+    transition: background 0.3s;
 }
 
 #contact-form button:hover {
-    background: #555;
+    background: #1a252f;
 }
 
-/* Form Mesajları (JS ile ekleniyor) */
 #form-message {
     margin-top: 15px;
     text-align: center;
     font-weight: bold;
-    min-height: 20px; /* Mesaj yokken zıplamayı önler */
+    min-height: 20px; 
 }
 
-/* Başarılı Mesaj Stili */
 .success {
     color: #27ae60;
     background: #eafaf1;
@@ -197,7 +314,6 @@ card-content h3 {
     border: 1px solid #27ae60;
 }
 
-/* Hata Mesajı Stili */
 .error {
     color: #c0392b;
     background: #f9e7e7;
@@ -206,47 +322,51 @@ card-content h3 {
     border: 1px solid #c0392b;
 }
 
-/* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
-
-
+/* --- MOBİL UYUMLULUK (HAMBURGER MENÜ) --- */
 .hamburger {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: white;
+    color: var(--secondary-color);
 }
 
-
 @media screen and (max-width: 768px) {
-    
-    
     .hamburger {
         display: block;
     }
 
-    
     .nav-links {
-        position: fixed; /* Sabit pozisyon */   
-        right: -100%; /* Ekranın dışına saklansın */
-        top: 60px; /* Header'ın hemen altından başlasın */
+        position: fixed; 
+        right: -100%; 
+        top: 60px; /* Header yüksekliği */
         height: calc(100vh - 60px);
-        background-color: #333;
-        flex-direction: column; /* Linkleri alt alta diz */
-        width: 50%; /* Ekranın yarısını kaplasın */
+        background-color: white;
+        flex-direction: column; 
+        width: 60%; 
         text-align: center;
-        transition: right 0.4s ease-in-out; /* Kayma animasyonu */
-        box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+        transition: right 0.4s ease-in-out; 
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 1000;
         padding-top: 2rem;
     }
 
-    /* JavaScript 'open' sınıfını eklediğinde menü ekrana kaysın */
     .nav-links.open {
         right: 0;
     }
 
-    /* Linklerin aralığını açalım */
     .nav-links li {
         margin: 2rem 0;
+    }
+    
+    /* Mobilde ana sayfa yazıları küçülsün */
+    .hero-content h1 {
+        font-size: 2.5rem; 
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    #home {
+        justify-content: center; 
+        text-align: center;
     }
 }

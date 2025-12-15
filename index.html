@@ -30,9 +30,12 @@
 
         <section id="home" class="page-section active">
             <div class="hero-content">
-                <h1>Merhaba, Ben Yelda</h1>
+                <h1>Merhaba, Ben <span class="highlight">Yelda</span></h1>
                 <p>Bilişim Sistemleri Mühendisliği Öğrencisi & Web Geliştirici</p>
-                <button onclick="window.location.hash='#projects'">Projelerime Göz At</button>
+                
+                <button onclick="document.querySelector('.nav-link[href=\'#projects\']').click()">
+                    Projelerime Göz At <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </section>
 

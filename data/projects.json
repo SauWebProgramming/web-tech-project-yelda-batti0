@@ -4,15 +4,15 @@
         "title": "Responsive Website",
         "description": "HTML, CSS ve JavaScript kullanarak duyarlı bir web sitesi geliştirdim.",
         "category": "Web Sitesi",
-        "image": "https://via.placeholder.com/400x250?text=Web+Sitesi",
+        "image": "resimler/site.png",
         "link": "https://github.com/yelda-batti0/responsive_website.git"
     },
     {
         "id": 2,
-        "title": "Adam Asmaca Oyunu",
-        "description": "Python kullanarak basit bir Adam Asmaca oyunu geliştirdim.",
+        "title": "Taş-Kağıt-Makas Oyunu",
+        "description": "Python kullanarak basit bir Taş-Kağıt-Makas oyunu geliştirdim.",
         "category": "Uygulama",
-        "image": "https://via.placeholder.com/400x250?text=Adam+Asmaca",
+        "image": "resimler/taskagitmakas.png",
         "link": "https://github.com/yelda-batti0/hangman_python.git"
     },
     {
@@ -20,7 +20,7 @@
         "title": "Captcha Uygulaması",
         "description": "C# kullanarak basit bir Captcha uygulaması geliştirdim.",
         "category": "Uygulama",
-        "image": "https://via.placeholder.com/400x250?text=Captcha+App",
+        "image": "resimler/captcha.png",
         "link": "https://github.com/yelda-batti0/CaptchaApp.git"
     }
 ]
