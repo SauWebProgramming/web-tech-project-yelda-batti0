@@ -89,24 +89,49 @@ nav .logo {
 /* --- HERO (ANA SAYFA) ÖZEL TASARIMI --- */
 
 #home.active {
-    display: flex; /* Sadece aktifken görünür ve esnek kutu olur */
-    align-items: center; 
-    justify-content: flex-start; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Yazı sola, resim sağa */
+    gap: 50px; /* İkisi birbirine yapışmasın */
 }
 
 
 
 #home {
-    
-    align-items: center; 
-    justify-content: flex-start; 
-    min-height: 85vh; 
-    
+    min-height: 85vh;
+    padding-top: 0;
 }
 
 .hero-content {
-    max-width: 800px;
+    flex: 1;
+    max-width: 600px;
 }
+
+.hero-image{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img{
+    width: 450px !important;
+    height: 450px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+
+animation: floatImage 4s ease-in-out infinite;
+
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0); }
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+}
+    
+
 
 .hero-content h1 {
     font-size: 4rem; 
@@ -369,4 +394,18 @@ nav .logo {
         justify-content: center; 
         text-align: center;
     }
+
+#home.active{
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
 }
+
+.hero-image img{
+    width: 250px;
+    height: 250px;
+}
+
+}
+
