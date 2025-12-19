@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     
     // --- 1. BÖLÜM: SPA MENÜ GEÇİŞLERİ (NAVİGASYON) ---
     const navLinks = document.querySelectorAll('.nav-link');
@@ -171,3 +172,25 @@ async function loadProjects() {
             }
         });
     });
+
+
+    // --- LOCALSTORAGE KULLANIMI  ---
+
+// 1. Sayfa yüklendiğinde hafızada kayıtlı isim var mı 
+document.addEventListener('DOMContentLoaded', () => {
+    const nameInput = document.getElementById('name');
+    
+    
+    if (localStorage.getItem('ziyaretciIsmi')) {
+        // Input'un içine o ismi otomatik yaz
+        nameInput.value = localStorage.getItem('ziyaretciIsmi');
+    }
+
+    // 2. Kullanıcı ismini yazarken her harfte kaydet
+    if (nameInput) {
+        nameInput.addEventListener('input', (e) => {
+            // 'setItem' ile veriyi tarayıcıya kaydediyoruz
+            localStorage.setItem('ziyaretciIsmi', e.target.value);
+        });
+    }
+});
