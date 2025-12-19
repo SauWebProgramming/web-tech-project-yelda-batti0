@@ -409,3 +409,29 @@ animation: floatImage 4s ease-in-out infinite;
 
 }
 
+/* --- PROFİL RESMİ ANİMASYONU --- */
+
+.hero-image img {
+    
+    width: 400px !important;  
+    height: 400px !important;
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 5px solid white; 
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3); 
+    
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0px); 
+    }
+    50% {
+        transform: translateY(-20px); 
+    }
+    100% {
+        transform: translateY(0px); 
+    }
+}
