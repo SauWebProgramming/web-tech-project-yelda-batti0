@@ -21,6 +21,7 @@ body {
     background-color: var(--bg-color); 
     color: var(--text-color);
     line-height: 1.6;
+    padding-top: 90px; /* Üst menü için boşluk */
 }
 
 /* --- SPA (TEK SAYFA) MANTIĞI VE ANİMASYONLAR --- */
@@ -50,16 +51,22 @@ body {
 }
 
 /* --- NAVİGASYON (ÜST MENÜ) --- */
+
 nav.navbar {
     background: white; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
     padding: 1rem 2rem;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; /* Menü yukarıda kalsın */
-    top: 0;
-    z-index: 1000;
+    
+    
+    position: fixed;    
+    top: 0;             
+    left: 0;            
+    width: 100%;       
+    z-index: 1000;       
 }
 
 nav .logo {
