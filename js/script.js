@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); // Sayfa yenilenmesini engelle
 
-            // Hedef bölümü bul (Örn: #projects -> projects)
+            
             const targetId = link.getAttribute('href').substring(1); 
             const targetSection = document.getElementById(targetId);
 
@@ -71,7 +71,7 @@ async function loadProjects() {
             const projectCard = document.createElement('div');
             projectCard.classList.add('project-card');
 
-            // İçeriğini doldur (JSON verileri buraya yerleşiyor)
+            
             projectCard.innerHTML = `
                 <img src="${project.image}" alt="${project.title}">
                 <div class="card-content">
@@ -105,7 +105,7 @@ async function loadProjects() {
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
-           // 2. Basit Doğrulamalar 
+          
             if (name.length < 3) {
                 showAlert('İsim en az 3 karakter olmalıdır.', 'error');
                 return;
@@ -116,8 +116,7 @@ async function loadProjects() {
                 return;
             }
 
-            // 3. Başarılı Gönderim Simülasyonu
-            // Gerçekte bir yere gitmiyor, sadece kullanıcıya bilgi veriyoruz.
+            
             showAlert(`Teşekkürler ${name}! Mesajınız başarıyla alındı.`, 'success');
             
             // Formu temizleme
@@ -125,12 +124,12 @@ async function loadProjects() {
         });
     }
 
-    // Mesaj gösterme fonksiyonu (Hatalı veya Başarılı)
+    
     function showAlert(msg, type) {
         formMessage.textContent = msg;
-        formMessage.className = type; // CSS'te .error veya .success stilini alacak
+        formMessage.className = type; 
         
-        // 3 saniye sonra mesajı sil
+        
         setTimeout(() => {
             formMessage.textContent = '';
             formMessage.className = '';
@@ -146,7 +145,7 @@ async function loadProjects() {
             // Menüyü aç/kapa 
             navMenu.classList.toggle('open');
             
-            // İkonu değiştir (Çarpı veya Çizgi)
+            
             const icon = hamburger.querySelector('i');
             if (navMenu.classList.contains('open')) {
                 icon.classList.remove('fa-bars');
@@ -158,14 +157,14 @@ async function loadProjects() {
         });
     }
 
-    // Mobilde bir linke tıklayınca menüyü otomatik kapat
+   
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             
             if (navMenu.classList.contains('open')) {
                 navMenu.classList.remove('open');
                 
-                // İkonu eski haline getir
+               
                 const icon = hamburger.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
